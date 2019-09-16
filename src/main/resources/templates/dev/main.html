@@ -34,9 +34,8 @@
         <div class="col-md-3 left_col menu_fixed">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="${pageContext.request.contextPath }/dev/flatform/main" class="site_title"><i
-                            class="fa fa-paw"></i> <span>APP
-								BMS</span>
+                    <a href="/appinfosb/dev/flatform/main" class="site_title"><i
+                            class="fa fa-paw"></i> <span>APPBMS</span>
                     </a>
                 </div>
 
@@ -45,13 +44,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img
-                                src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                alt="..." class="img-circle profile_img">
+                        <img th:src="@{/static/images/img.jpg}" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>${devUserSession.devcode }</h2>
+                        <h2 th:text="${session.userSession.devcode}">${session.userSession.devcode }</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -62,7 +59,7 @@
                 <div id="sidebar-menu"
                      class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>${devUserSession.devname }</h3>
+                        <h3 th:text="${session.userSession.devcode}">${devUserSession.devname }</h3>
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> APP账户管理 <span
                                     class="fa fa-chevron-down"></span>
@@ -117,9 +114,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class=""><a href="javascript:;"
                                         class="user-profile dropdown-toggle" data-toggle="dropdown"
-                                        aria-expanded="false"> <img
-                                src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                alt="">${devUserSession.devcode } <span
+                                        aria-expanded="false"> <img th:src="@{/static/images/img.jpg}"
+                                                                    alt=""><span
+                                th:text="${session.userSession.devcode }"></span><span
                                 class=" fa fa-angle-down"></span> </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a
@@ -133,30 +130,26 @@
 
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list"
                                 role="menu">
-                                <li><a> <span class="image"><img
-                                        src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                        alt="Profile Image"/>
+                                <li><a> <span class="image"><img th:src="@{/static/images/img.jpg}"
+                                                                 alt="Profile Image"/>
 										</span> <span> <span>John Smith</span> <span class="time">3
 													mins ago</span> </span> <span class="message"> Film festivals used
 												to be do-or-die moments for movie makers. They were where...
 										</span> </a></li>
-                                <li><a> <span class="image"><img
-                                        src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                        alt="Profile Image"/>
+                                <li><a> <span class="image"><img th:src="@{/static/images/img.jpg}"
+                                                                 alt="Profile Image"/>
 										</span> <span> <span>John Smith</span> <span class="time">3
 													mins ago</span> </span> <span class="message"> Film festivals used
 												to be do-or-die moments for movie makers. They were where...
 										</span> </a></li>
-                                <li><a> <span class="image"><img
-                                        src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                        alt="Profile Image"/>
+                                <li><a> <span class="image"><img th:src="@{/static/images/img.jpg}"
+                                                                 alt="Profile Image"/>
 										</span> <span> <span>John Smith</span> <span class="time">3
 													mins ago</span> </span> <span class="message"> Film festivals used
 												to be do-or-die moments for movie makers. They were where...
 										</span> </a></li>
-                                <li><a> <span class="image"><img
-                                        src="${pageContext.request.contextPath }/statics/images/img.jpg"
-                                        alt="Profile Image"/>
+                                <li><a> <span class="image"><img th:src="@{/static/images/img.jpg}"
+                                                                 alt="Profile Image"/>
 										</span> <span> <span>John Smith</span> <span class="time">3
 													mins ago</span> </span> <span class="message"> Film festivals used
 												to be do-or-die moments for movie makers. They were where...
@@ -179,7 +172,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>
-                            欢迎你：${devUserSession.devname }<strong> | 角色：开发者账户</strong>
+                            欢迎你：<span th:text="${session.userSession.getDevcode()}"></span><strong> | 角色：开发者账户</strong>
                         </h3>
                     </div>
                 </div>
@@ -195,5 +188,21 @@
         </div>
     </div>
 </div>
+<!-- jQuery -->
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/static/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/static/js/fastclick.js}"></script>
+<!-- NProgress -->
+<script th:src="@{/static/js/nprogress.js}"></script>
+<!-- jQuery custom content scroller -->
+<script th:src="@{/static/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<!-- Custom Theme Scripts -->
+<script th:src="@{/static/js/custom.min.js}"></script>
+<!-- validator -->
+<script th:src="@{/static/js/validator.js}"></script>
+<!-- dropzone -->
+<script th:src="@{/static/js/dropzone.js}"></script>
 </body>
 </html>

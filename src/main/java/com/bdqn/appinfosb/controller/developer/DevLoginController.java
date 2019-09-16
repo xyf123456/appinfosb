@@ -57,24 +57,23 @@ public class DevLoginController {
     @ResponseBody
     public CommonReturnType doLogin(@RequestParam String devcode,
                                     @RequestParam String devpassword,
-                                    HttpServletRequest request,
-                                    HttpSession session) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+                                    HttpServletRequest request) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
         //        1、入参校验
         if (StringUtils.isEmpty(devcode)
                 || StringUtils.isEmpty(devpassword)) {
             throw new BusinessException(EnumBusinessError.PARAMETER_VALIDATION_ERROR);
         }
         DevUser user = iDevUserService.login(devcode, devpassword);
-        session.setAttribute(Constants.USERSESSION, user);
+        request.getSession().setAttribute(Constants.USERSESSION, user);
         //页面跳转（main.jsp）
 //            return "redirect:/dev/flatform/main";
         return CommonReturnType.create(user);
     }
 
-    @RequestMapping(value="/flatform/main")
-    public String main(HttpSession session){
-        if(session.getAttribute(Constants.USERSESSION) == null){
-            return Constants.REDIRECT+"dev/login";
+    @RequestMapping(value = "/flatform/main")
+    public String main(HttpSession session) {
+        if (session.getAttribute(Constants.USERSESSION) == null) {
+            return Constants.REDIRECT + "dev/login";
         }
         return "dev/main";
     }
