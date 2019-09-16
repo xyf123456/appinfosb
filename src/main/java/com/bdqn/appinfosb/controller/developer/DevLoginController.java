@@ -78,4 +78,17 @@ public class DevLoginController {
         return "dev/main";
     }
 
+    /**
+     * Description: TODO 退出功能
+     * param: [session]
+     * return: java.lang.String
+     * Date: 2019/9/17 7:55
+     */
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session){
+        //清除session
+        session.removeAttribute(Constants.USERSESSION);
+        return "dev/devlogin";
+    }
+
 }
